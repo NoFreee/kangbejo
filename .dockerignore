@@ -1,0 +1,45 @@
+# ============================================================
+# .dockerignore – File yang dikecualikan dari Docker build
+# ============================================================
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Laravel / PHP (tidak dipakai di static build)
+vendor/
+node_modules/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+storage/logs/
+bootstrap/cache/
+.env
+.env.*
+*.log
+
+# Composer & npm artifacts
+composer.lock
+package-lock.json
+
+# IDE & editor
+.vscode/
+.idea/
+.cursor/
+*.editorconfig
+.phpactor.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker sendiri (tidak perlu copy ke dalam image)
+Dockerfile
+docker-compose.yml
+nginx.conf
+
+# Build artifacts
+public/build/
+public/hot/
+public/storage/
