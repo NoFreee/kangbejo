@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel – Desa Wisata Kangbejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== LOGIN SCREEN ===== -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-bg">
+    <div class="login-blob login-blob-1"></div>
+    <div class="login-blob login-blob-2"></div>
+  </div>
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="login-logo-icon">🌿</span>
+      <div>
+        <div class="login-logo-title">Admin Panel</div>
+        <div class="login-logo-sub">Desa Wisata Kangbejo</div>
+      </div>
+    </div>
+    <h1 class="login-title">Selamat Datang</h1>
+    <p class="login-desc">Masukkan password untuk masuk ke panel admin</p>
+    <form id="loginForm">
+      <div class="login-field">
+        <label for="loginPassword">Password</label>
+        <div class="login-input-wrap">
+          <input type="password" id="loginPassword" placeholder="Masukkan password..." autocomplete="current-password" />
+          <button type="button" class="eye-btn" id="eyeBtn">👁</button>
+        </div>
+        <div class="login-error" id="loginError">Password salah. Coba lagi.</div>
+      </div>
+      <button type="submit" class="login-btn">
+        <span>Masuk ke Admin</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </form>
+    <div class="login-hint">Password default: <strong>admin123</strong></div>
+  </div>
+</div>
+
+<!-- ===== ADMIN APP ===== -->
+<div class="admin-app" id="adminApp" style="display:none">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <span>🌿</span>
+        <div>
+          <div class="sidebar-title">Admin Panel</div>
+          <div class="sidebar-sub">Kangbejo</div>
+        </div>
+      </div>
+      <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+    </div>
+    <nav class="sidebar-nav">
+      <button class="sidebar-item active" data-section="dashboard">
+        <span class="sidebar-icon">📊</span><span class="sidebar-label">Dashboard</span>
+      </button>
+      <button class="sidebar-item" data-section="siteInfo">
+        <span class="sidebar-icon">⚙️</span><span class="sidebar-label">Pengaturan Umum</span>
+      </button>
+      <button class="sidebar-item" data-section="navbar">
+        <span class="sidebar-icon">🧭</span><span class="sidebar-label">Navigasi</span>
+      </button>
+      <button class="sidebar-item" data-section="hero">
+        <span class="sidebar-icon">🖼️</span><span class="sidebar-label">Hero / Banner</span>
+      </button>
+      <button class="sidebar-item" data-section="tentang">
+        <span class="sidebar-icon">🏡</span><span class="sidebar-label">Tentang Kami</span>
+      </button>
+      <button class="sidebar-item" data-section="wisata">
+        <span class="sidebar-icon">🎯</span><span class="sidebar-label">Paket Wisata</span>
+      </button>
+      <button class="sidebar-item" data-section="galeri">
+        <span class="sidebar-icon">🖼</span><span class="sidebar-label">Galeri</span>
+      </button>
+      <button class="sidebar-item" data-section="fasilitas">
+        <span class="sidebar-icon">🏅</span><span class="sidebar-label">Fasilitas</span>
+      </button>
+      <button class="sidebar-item" data-section="testimoni">
+        <span class="sidebar-icon">⭐</span><span class="sidebar-label">Testimoni</span>
+      </button>
+      <button class="sidebar-item" data-section="kontak">
+        <span class="sidebar-icon">📬</span><span class="sidebar-label">Kontak</span>
+      </button>
+      <button class="sidebar-item" data-section="footer">
+        <span class="sidebar-icon">📄</span><span class="sidebar-label">Footer</span>
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="../" target="_blank" class="sidebar-preview-btn">
+        <span>👁</span><span class="sidebar-label">Lihat Website</span>
+      </a>
+      <button class="sidebar-logout" id="logoutBtn" title="Keluar">🚪</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main" id="adminMain">
+    <!-- Topbar -->
+    <div class="admin-topbar">
+      <div class="topbar-left">
+        <h2 class="topbar-title" id="topbarTitle">Dashboard</h2>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-save-global" id="btnSaveGlobal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Simpan & Publish
+        </button>
+        <a href="../" target="_blank" class="btn-preview">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Preview
+        </a>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="admin-toast" id="adminToast"></div>
+
+    <!-- Sections -->
+    <div class="admin-content" id="adminContent">
+
+      <!-- ── DASHBOARD ── -->
+      <div class="admin-section active" data-panel="dashboard">
+        <div class="dash-grid">
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon">🧭</div>
+            <div class="dash-stat-value" id="statNavItems">6</div>
+            <div class="dash-stat-label">Item Navigasi</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon">🎯</div>
+            <div class="dash-stat-value" id="statPackages">3</div>
+            <div class="dash-stat-label">Paket Wisata</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon">🖼️</div>
+            <div class="dash-stat-value" id="statGallery">4</div>
+            <div class="dash-stat-label">Foto Galeri</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon">⭐</div>
+            <div class="dash-stat-value" id="statTestimonials">3</div>
+            <div class="dash-stat-label">Testimoni</div>
+          </div>
+        </div>
+        <div class="dash-info-card">
+          <h3>🎉 Selamat Datang di Admin Panel!</h3>
+          <p>Di sini Anda dapat mengelola seluruh konten website Desa Wisata Kangbejo. Pilih seksi di sidebar kiri untuk mulai mengedit.</p>
+          <ul class="dash-tips">
+            <li>✏️ Edit teks, gambar, dan tombol di setiap seksi</li>
+            <li>➕ Tambah atau hapus item (paket wisata, galeri, fasilitas, testimoni, dan navigasi)</li>
+            <li>📸 Upload gambar baru langsung dari komputer Anda</li>
+            <li>💾 Klik <strong>Simpan & Publish</strong> untuk menyimpan semua perubahan</li>
+            <li>👁 Klik <strong>Preview</strong> untuk melihat tampilan website</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── SITE INFO ── -->
+      <div class="admin-section" data-panel="siteInfo">
+        <div class="form-card">
+          <h3 class="form-card-title">Informasi Umum Website</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Logo Emoji</label>
+              <input type="text" id="si_logoEmoji" placeholder="🌿" />
+            </div>
+            <div class="form-group">
+              <label>Teks Logo</label>
+              <input type="text" id="si_logoText" placeholder="Desa Wisata" />
+            </div>
+            <div class="form-group">
+              <label>Nama Tebal Logo</label>
+              <input type="text" id="si_logoBold" placeholder="Kangbejo" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Teks Tombol CTA Navbar</label>
+              <input type="text" id="si_ctaText" placeholder="Kunjungi Kami" />
+            </div>
+            <div class="form-group">
+              <label>Link CTA Navbar</label>
+              <input type="text" id="si_ctaHref" placeholder="#kontak" />
+            </div>
+            <div class="form-group">
+              <label>Nomor WhatsApp (tanpa +)</label>
+              <input type="text" id="si_waNumber" placeholder="6281234567890" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Meta Title (SEO)</label>
+              <input type="text" id="si_metaTitle" placeholder="Desa Wisata Kangbejo – ..." />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Meta Description (SEO)</label>
+              <textarea id="si_metaDesc" rows="2" placeholder="Deskripsi singkat untuk mesin pencari..."></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── NAVBAR ── -->
+      <div class="admin-section" data-panel="navbar">
+        <div class="form-card">
+          <div class="form-card-header">
+            <h3 class="form-card-title">Item Navigasi</h3>
+            <button class="btn-add" id="addNavItem">+ Tambah Item</button>
+          </div>
+          <p class="form-hint">Atur item menu navigasi website. Seret untuk mengubah urutan.</p>
+          <div class="item-list" id="navItemList"></div>
+        </div>
+      </div>
+
+      <!-- ── HERO ── -->
+      <div class="admin-section" data-panel="hero">
+        <div class="form-card">
+          <h3 class="form-card-title">Konten Hero / Banner Utama</h3>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Teks Badge</label>
+              <input type="text" id="hero_badge" placeholder="✦ Destinasi Unggulan ✦" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Judul (baris 1)</label>
+              <input type="text" id="hero_title" placeholder="Jelajahi Keindahan" />
+            </div>
+            <div class="form-group">
+              <label>Judul Teracent (baris 2)</label>
+              <input type="text" id="hero_titleHighlight" placeholder="Desa Wisata Kangbejo" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Subjudul / Deskripsi</label>
+              <textarea id="hero_subtitle" rows="3" placeholder="Deskripsi singkat..."></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Tombol 1 – Teks</label>
+              <input type="text" id="hero_btn1Text" placeholder="Jelajahi Sekarang" />
+            </div>
+            <div class="form-group">
+              <label>Tombol 1 – Link</label>
+              <input type="text" id="hero_btn1Href" placeholder="#wisata" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Tombol 2 – Teks</label>
+              <input type="text" id="hero_btn2Text" placeholder="Tentang Kami" />
+            </div>
+            <div class="form-group">
+              <label>Tombol 2 – Link</label>
+              <input type="text" id="hero_btn2Href" placeholder="#tentang" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Gambar Latar Hero</label>
+              <div class="img-upload-wrap">
+                <img id="hero_bgPreview" src="" alt="Preview" class="img-preview" style="display:none" />
+                <label class="img-upload-btn" for="hero_bgUpload">
+                  📁 Pilih Gambar
+                  <input type="file" id="hero_bgUpload" accept="image/*" style="display:none" />
+                </label>
+                <input type="text" id="hero_bgImage" placeholder="hero_village.png atau URL gambar" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="form-card-header">
+            <h3 class="form-card-title">Statistik Hero</h3>
+            <button class="btn-add" id="addHeroStat">+ Tambah Stat</button>
+          </div>
+          <div class="item-list" id="heroStatList"></div>
+        </div>
+      </div>
+
+      <!-- ── TENTANG ── -->
+      <div class="admin-section" data-panel="tentang">
+        <div class="form-card">
+          <h3 class="form-card-title">Seksi Tentang Kami</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Label Seksi</label>
+              <input type="text" id="tent_label" placeholder="Tentang Kami" />
+            </div>
+            <div class="form-group">
+              <label>Judul</label>
+              <input type="text" id="tent_title" placeholder="Warisan Alam & Budaya" />
+            </div>
+            <div class="form-group">
+              <label>Judul Aksen</label>
+              <input type="text" id="tent_titleAccent" placeholder="yang Terjaga" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Paragraf 1</label>
+              <textarea id="tent_desc1" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Paragraf 2</label>
+              <textarea id="tent_desc2" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Badge Icon</label>
+              <input type="text" id="tent_badgeIcon" placeholder="🏆" />
+            </div>
+            <div class="form-group">
+              <label>Badge Judul</label>
+              <input type="text" id="tent_badgeTitle" placeholder="Desa Wisata Terbaik" />
+            </div>
+            <div class="form-group">
+              <label>Badge Subjudul</label>
+              <input type="text" id="tent_badgeSub" placeholder="Penghargaan Nasional 2024" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Angka Pengalaman</label>
+              <input type="text" id="tent_expNumber" placeholder="10+" />
+            </div>
+            <div class="form-group">
+              <label>Teks Pengalaman</label>
+              <input type="text" id="tent_expText" placeholder="Tahun Melayani Wisatawan" />
+            </div>
+            <div class="form-group">
+              <label>Teks Tombol CTA</label>
+              <input type="text" id="tent_ctaText" placeholder="Hubungi Kami" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Gambar (nama file atau URL)</label>
+              <div class="img-upload-wrap">
+                <img id="tent_imgPreview" src="" alt="Preview" class="img-preview" style="display:none" />
+                <label class="img-upload-btn" for="tent_imgUpload">📁 Pilih Gambar
+                  <input type="file" id="tent_imgUpload" accept="image/*" style="display:none" />
+                </label>
+                <input type="text" id="tent_image" placeholder="hero_village.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="form-card-header">
+            <h3 class="form-card-title">Nilai-Nilai Desa</h3>
+            <button class="btn-add" id="addValue">+ Tambah Nilai</button>
+          </div>
+          <div class="item-list" id="valueList"></div>
+        </div>
+      </div>
+
+      <!-- ── WISATA ── -->
+      <div class="admin-section" data-panel="wisata">
+        <div class="form-card">
+          <h3 class="form-card-title">Header Seksi Paket Wisata</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Label</label>
+              <input type="text" id="wis_label" placeholder="Paket Wisata" />
+            </div>
+            <div class="form-group">
+              <label>Judul</label>
+              <input type="text" id="wis_title" placeholder="Pilih Pengalaman" />
+            </div>
+            <div class="form-group">
+              <label>Judul Aksen</label>
+              <input type="text" id="wis_titleAccent" placeholder="Petualangan Anda" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Deskripsi</label>
+              <textarea id="wis_desc" rows="2"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="form-card-header">
+            <h3 class="form-card-title">Daftar Paket Wisata</h3>
+            <button class="btn-add" id="addPackage">+ Tambah Paket</button>
+          </div>
+          <div class="item-list" id="packageList"></div>
+        </div>
+      </div>
+
+      <!-- ── GALERI ── -->
+      <div class="admin-section" data-panel="galeri">
+        <div class="form-card">
+          <h3 class="form-card-title">Header Seksi Galeri</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Label</label>
+              <input type="text" id="gal_label" placeholder="Galeri" />
+            </div>
+            <div class="form-group">
+              <label>Judul</label>
+              <input type="text" id="gal_title" placeholder="Keindahan" />
+            </div>
+            <div class="form-group">
+              <label>Judul Aksen</label>
+              <input type="text" id="gal_titleAccent" placeholder="Kangbejo" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Deskripsi</label>
+              <input type="text" id="gal_desc" />
+            </div>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="form-card-header">
+            <h3 class="form-card-title">Foto Galeri</h3>
+            <button class="btn-add" id="addGalleryItem">+ Tambah Foto</button>
+          </div>
+          <p class="form-hint">Ukuran: <strong>large</strong> = 2 kolom lebar, <strong>wide</strong> = 2 kolom bawah, <strong>normal</strong> = 1 kolom</p>
+          <div class="item-list galeri-list" id="galleryList"></div>
+        </div>
+      </div>
+
+      <!-- ── FASILITAS ── -->
+      <div class="admin-section" data-panel="fasilitas">
+        <div class="form-card">
+          <h3 class="form-card-title">Header Seksi Fasilitas</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Label</label>
+              <input type="text" id="fas_label" />
+            </div>
+            <div class="form-group">
+              <label>Judul</label>
+              <input type="text" id="fas_title" />
+            </div>
+            <div class="form-group">
+              <label>Judul Aksen</label>
+              <input type="text" id="fas_titleAccent" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Deskripsi</label>
+              <input type="text" id="fas_desc" />
+            </div>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="form-card-header">
+            <h3 class="form-card-title">Daftar Fasilitas</h3>
+            <button class="btn-add" id="addFasilitas">+ Tambah Fasilitas</button>
+          </div>
+          <div class="item-list" id="fasilitasList"></div>
+        </div>
+      </div>
+
+      <!-- ── TESTIMONI ── -->
+      <div class="admin-section" data-panel="testimoni">
+        <div class="form-card">
+          <h3 class="form-card-title">Header Seksi Testimoni</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Label</label>
+              <input type="text" id="tes_label" />
+            </div>
+            <div class="form-group">
+              <label>Judul</label>
+              <input type="text" id="tes_title" />
+            </div>
+            <div class="form-group">
+              <label>Judul Aksen</label>
+              <input type="text" id="tes_titleAccent" />
+            </div>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="form-card-header">
+            <h3 class="form-card-title">Daftar Testimoni</h3>
+            <button class="btn-add" id="addTestimoni">+ Tambah Testimoni</button>
+          </div>
+          <div class="item-list" id="testimoniList"></div>
+        </div>
+      </div>
+
+      <!-- ── KONTAK ── -->
+      <div class="admin-section" data-panel="kontak">
+        <div class="form-card">
+          <h3 class="form-card-title">Informasi Kontak</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Label Seksi</label>
+              <input type="text" id="kon_label" />
+            </div>
+            <div class="form-group">
+              <label>Judul</label>
+              <input type="text" id="kon_title" />
+            </div>
+            <div class="form-group">
+              <label>Judul Aksen</label>
+              <input type="text" id="kon_titleAccent" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Deskripsi</label>
+              <textarea id="kon_desc" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Alamat</label>
+              <textarea id="kon_alamat" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Telepon</label>
+              <input type="text" id="kon_telepon" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="kon_email" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Jam Operasional</label>
+              <input type="text" id="kon_jam" />
+            </div>
+            <div class="form-group">
+              <label>Nomor WhatsApp Float</label>
+              <input type="text" id="kon_waNumber" />
+            </div>
+          </div>
+        </div>
+        <div class="form-card">
+          <h3 class="form-card-title">Link Sosial Media</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Instagram URL</label>
+              <input type="text" id="kon_instagram" />
+            </div>
+            <div class="form-group">
+              <label>Facebook URL</label>
+              <input type="text" id="kon_facebook" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>WhatsApp URL</label>
+              <input type="text" id="kon_whatsapp" />
+            </div>
+            <div class="form-group">
+              <label>YouTube URL</label>
+              <input type="text" id="kon_youtube" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FOOTER ── -->
+      <div class="admin-section" data-panel="footer">
+        <div class="form-card">
+          <h3 class="form-card-title">Konten Footer</h3>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Tagline / Deskripsi Singkat</label>
+              <textarea id="foot_tagline" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Teks Copyright</label>
+              <input type="text" id="foot_copyright" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Teks Kredit</label>
+              <input type="text" id="foot_credit" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /admin-content -->
+  </main>
+</div><!-- /admin-app -->
+
+<!-- MODAL OVERLAY -->
+<div class="modal-overlay" id="modalOverlay"></div>
+
+<script src="../site-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
