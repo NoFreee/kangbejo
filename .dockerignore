@@ -37,7 +37,6 @@ Thumbs.db
 # Docker sendiri (tidak perlu copy ke dalam image)
 Dockerfile
 docker-compose.yml
-nginx.conf
 
 # Build artifacts
 public/build/
